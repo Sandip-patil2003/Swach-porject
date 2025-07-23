@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import NavigationBar from "./components/navbar/Navbar";
 import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUS/AboutUS";
-import WhatWeDo from "./components/WhatWeDo";
+import What_We_Do from "./components/WhatWeDo/What_We_Do";
 import Sugandhabai from "./components/Sugandhabai";
 import Resources from "./components/Resources/Resources";
-import Blog from "./components/Blog";
+import Blog from "./components/Blog/Blog";
 import SocietyMaster from "./components/Society/SocietyMaster";
 import ProductMaster from "./components/product/productMaster";
 import { useState, useEffect } from "react";
@@ -37,7 +37,7 @@ function App() {
           <Route path="/register" element={<RegisterPage onRegisterSuccess={() => setIsRegistered(true)} />} />
           <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
            <Route path="/about" element={isLoggedIn ? <AboutUs /> : <Navigate to="/login" />} />
-            <Route path="/whatwedo" element={isLoggedIn ? <WhatWeDo /> : <Navigate to="/login" />} />
+            <Route path="/whatwedo" element={isLoggedIn ? <What_We_Do /> : <Navigate to="/login" />} />
              <Route path="/sugandhabai" element={isLoggedIn ? <Sugandhabai /> : <Navigate to="/login" />} />
               <Route path="/resources" element={isLoggedIn ? <Resources /> : <Navigate to="/login" />} />
                <Route path="/blog" element={isLoggedIn ? <Blog/> : <Navigate to="/login" />} />

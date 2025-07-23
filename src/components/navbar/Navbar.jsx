@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { NavDropdown, Navbar, Nav, Container } from "react-bootstrap";
 import swachLogo from '../../logo/swach_logo.jpg';
-import './navbar.css'; // Assuming you have a CSS file for styling the navbar
+import './navbar.css'; 
 
 function NavigationBar() {
   return (
-    <Navbar  expand="lg">
+    <Navbar  expand="lg" className="navbar-custom">
       <Container>
         <Navbar.Brand href="/">
           <img src={swachLogo} alt="Logo" height="45px" />
