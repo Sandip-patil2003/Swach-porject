@@ -1,0 +1,8 @@
+.home-container {
+    background: linear-gradient(to right, #f5f2ff, #ffffff);
+}
+
+.home-left img {
+    max-height: 500px;
+    object-fit: contain;
+}
