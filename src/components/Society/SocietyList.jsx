@@ -65,7 +65,7 @@ function SocietyList() {
           />
         </div>
       </div>
-      <table className="table table-bordered table-striped font-size-sm table-sm">
+      <table className="table table-bordered table-striped client table-sm">
         <thead className='table-dark'>
           <tr >
             <th>#</th>
@@ -79,7 +79,7 @@ function SocietyList() {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className=''>
           {societies
             .filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
             .slice((page - 1) * Entries, page * Entries)
@@ -94,8 +94,8 @@ function SocietyList() {
                 <td>email@example.com</td>
                 <td>100</td>
                 <td className='d-flex flex-row'>
-                  <button className="btn btn-sm btn-warning me-1" onClick={() => handleEdit(item.id)}>EDIT</button>
-                  <button className="btn btn-sm btn-danger" onClick={() => handleDelete(item.id)}>DELETE</button>
+                  <button className="btn btn-sm btn-warning me-1" style={{fontSize:'13px'}} onClick={() => handleEdit(item.id)}>EDIT</button>
+                  <button className="btn btn-sm btn-danger" style={{fontSize:'13px'}} onClick={() => handleDelete(item.id)}>DELETE</button>
                 </td>
               </tr>
             ))}

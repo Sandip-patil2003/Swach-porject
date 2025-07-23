@@ -1,0 +1,12 @@
+.about-container {
+  min-height: 100vh;
+}
+
+.about-image {
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+  transform: scale(1.03);
+  transition: 0.3s ease;
+}

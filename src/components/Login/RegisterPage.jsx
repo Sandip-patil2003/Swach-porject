@@ -23,7 +23,6 @@ const RegisterPage = ({ onRegisterSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Fake POST request — JSONPlaceholder will always return success with id
       await axios.post('https://jsonplaceholder.typicode.com/users', formData);
       localStorage.setItem('isRegistered', 'true');
       if (onRegisterSuccess) onRegisterSuccess();

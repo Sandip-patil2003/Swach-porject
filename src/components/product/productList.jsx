@@ -42,7 +42,7 @@ const ProductList = () => {
   return (
     <div>
       <h5 className="text-center mt-4">LIST OF PRODUCTS</h5>
-      <table className="table table-bordered table-striped table-sm mt-3">
+      <table className="table table-bordered table-striped table-sm mt-3" style={{ fontSize: '0.9rem' }}>
         <thead className="table-dark">
           <tr>
             <th>#</th>
@@ -61,8 +61,8 @@ const ProductList = () => {
                 <td>{item.costFlat}</td>
                 <td>{item.costSociety}</td>
                 <td className="d-flex flex-row">
-                  <button className="btn btn-sm btn-warning me-1" onClick={() => handleEdit(item)}>EDIT</button>
-                  <button className="btn btn-sm btn-danger" onClick={() => handleDelete(item.id)}>DELETE</button>
+                  <button className="btn btn-sm btn-warning me-1" style={{fontSize:'13px'}} onClick={() => handleEdit(item)}>EDIT</button>
+                  <button className="btn btn-sm btn-danger" style={{fontSize:'13px'}} onClick={() => handleDelete(item.id)}>DELETE</button>
                 </td>
               </tr>
             ))

@@ -1,13 +1,25 @@
+/* Global layout fix */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* Fullscreen layout */
 .home-page {
   width: 100vw;
   height: 100vh;
-  margin: 0;
-  padding: 0;
+  margin-left: -55px; /* Adjusted for navbar */
   background-color: #f8f9fa;
   overflow: hidden;
   display: flex;
-  margin-left: -50px;
+  flex-direction: column;
+
+  /* Responsive row on md+ */
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 /* Image style with hover effect */
@@ -22,14 +34,12 @@
   transform: scale(1.05);
 }
 
-/* Button animation */
 /* Stylish Gradient Button from Uiverse.io */
-/* From Uiverse.io by adamgiebl */ 
 .button {
   position: relative;
   display: inline-block;
-  margin: 10px;
-  padding: 5px;
+  margin: 10px auto;
+  padding: 10px 20px;
   text-align: center;
   font-size: 15px;
   letter-spacing: 1px;

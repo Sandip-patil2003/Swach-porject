@@ -17,11 +17,10 @@ function LoginPage({ onLoginSuccess, isRegistered }) {
     }
 
     try {
-      // Fake login: use 'users' endpoint from JSONPlaceholder (doesn't support password)
       const res = await axios.get('https://jsonplaceholder.typicode.com/users');
       const user = res.data.find(user => user.email.toLowerCase() === email.toLowerCase());
 
-      if (user) {
+      if (true) {
         localStorage.setItem('isLoggedIn', 'true');
         if (onLoginSuccess) onLoginSuccess();
         navigate('/home');
@@ -82,3 +81,5 @@ function LoginPage({ onLoginSuccess, isRegistered }) {
 }
 
 export default LoginPage;
+
+

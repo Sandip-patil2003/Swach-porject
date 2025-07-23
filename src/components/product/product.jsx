@@ -31,7 +31,7 @@ const Product = () => {
 
   return (
     <div className="container mt-4 p-4 border bg-light rounded">
-      <h3 className="text-center mb-4">PRODUCT MASTER</h3>
+      <h5 className="text-center mb-4">PRODUCT MASTER</h5>
       <div className="row">
         <div className="col-md-6 mb-3 ">
           <label className='size'>Product Type</label>

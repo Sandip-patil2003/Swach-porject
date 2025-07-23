@@ -26,18 +26,18 @@ const BillDetails = () => {
 
   return (
     <div className="border p-4 mb-4 bg-light rounded" style={{ maxWidth: '800px', margin: '40px auto', fontSize: '1.15rem' }}>
-      <h3 className="text-center mb-4" style={{ fontSize: '2rem',  }}>BILL DETAILS</h3>
+      <h3 className="text-center mb-4" style={{fontSize:"20px"}}>BILL DETAILS</h3>
       <div className="row">
         <div className="col-md-6">
           <label  className='size'>Society Name</label>
-          <select className="form-control mx-auto w-75 h-50 text" name="societyName" value={formData.societyName} onChange={handleChange}>
+          <select className="form-control mx-auto w-75 h-50 text" style={{fontSize:"15px"}} name="societyName" value={formData.societyName} onChange={handleChange}>
             <option value="">Select</option>
             <option value="Swach Phase 1 Society">Swach Phase 1 Society</option>
           </select>
         </div>
         <div className="col-md-6">
           <label className='size'>Month</label>
-          <select className="form-control mx-auto w-75 h-50 text"  name="month" value={formData.month} onChange={handleChange} >
+          <select className="form-control mx-auto w-75 h-50 text " style={{fontSize:"15px"}}  name="month" value={formData.month} onChange={handleChange} >
             <option value="">Select</option>
             <option value="January">January</option>
             <option value="February">February</option>

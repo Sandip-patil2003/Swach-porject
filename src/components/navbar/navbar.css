@@ -15,7 +15,7 @@
 
 /* Nav links (home, about, etc.) */
 .navbar .nav-link {
-  color: #afc0fa !important;
+  color: #ffffff !important;
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.01em;
@@ -29,7 +29,7 @@
 /* Hover and active state for nav links */
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  color: #ffffff !important;
+  color: #afc0fa !important;
   text-decoration: underline;
 }
 

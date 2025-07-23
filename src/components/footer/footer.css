@@ -1,0 +1,27 @@
+.footer-container {
+  background-color: #f8f9fa;
+  padding: 30px 0;
+  border-top: 1px solid #ddd;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-section h5 {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.footer-section p {
+  color: #333;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.footer-section i {
+  margin-right: 5px;
+  color: #28a745;
+}
