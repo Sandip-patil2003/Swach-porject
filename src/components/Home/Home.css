@@ -1,0 +1,23 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.home-container {
+  min-height: 100vh;
+}
+
+.hover-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-image:hover {
+  transform: scale(1.02);
+}
+
+
+.footer a:hover {
+  color: #ccc;
+}

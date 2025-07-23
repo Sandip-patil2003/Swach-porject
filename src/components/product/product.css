@@ -1,0 +1,30 @@
+
+input, textarea {
+    font-size: 14px;
+    
+}
+
+textarea {
+    resize: vertical;
+}
+
+label {
+    font-weight: 400;
+    font-family:  'Poppins', Arial, sans-serif;
+}
+
+.style{
+    height: 32px ;
+}
+
+.text{
+   font-family:  'Poppins', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.size{
+    margin-left: 13%;
+}
+
+
+
