@@ -1,0 +1,111 @@
+/* ====== CSC-style Navbar ====== */
+.navbar {
+  background-color: #2B337D !important;
+  border-bottom: none;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-brand img {
+  margin-right: 1rem;
+}
+
+/* Nav links (home, about, etc.) */
+.navbar .nav-link {
+  color: #afc0fa !important;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  margin-right: 1.5rem;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+}
+
+/* Hover and active state for nav links */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+/* Dropdown menu style */
+.navbar .dropdown-menu {
+  background-color: #5562b5;
+  border: none;
+  min-width: 170px;
+  padding: 0.5rem 0;
+  border-radius: 0.25rem;
+}
+
+/* Dropdown item style */
+.navbar .dropdown-item {
+  color: #dbe6fa;
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+  text-decoration: underline;
+  background-color: #5562b5;
+  color: #ffffff;
+}
+
+/* Toggler icon style */
+.navbar .navbar-toggler {
+  border: none;
+  background-color: transparent;
+}
+
+/* Align nav sections */
+.navbar .navbar-collapse {
+  justify-content: space-between;
+}
+
+/* Right-align dropdown on larger screens */
+@media (min-width: 992px) {
+  .dropdown-menu[data-bs-popper] {
+    right: 0 !important;
+    left: auto !important;
+  }
+}
+
+/* ====== Base Page Style ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ====== Mobile Responsiveness ====== */
+@media (max-width: 991px) {
+  .navbar .nav-link {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .navbar .dropdown-menu {
+    background-color: #2B337D;
+  }
+
+  .navbar .dropdown-item {
+    color: #ffffff;
+    font-size: 0.9rem;
+  }
+}

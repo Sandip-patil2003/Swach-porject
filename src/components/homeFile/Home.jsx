@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FaUser, FaBuilding } from 'react-icons/fa';
-import homeImage from '../logo/home.png'; 
+import homeImage from '../../logo/home.png'; 
 import './Home.css';
 
 function Home() {
