@@ -1,0 +1,10 @@
+/* Basic styles for login page card and background */
+.bg-auth {
+  background: #f8f9fa;
+}
+.card-auth {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  border-radius: 12px;
+}
+
+

@@ -1,0 +1,65 @@
+/* Fullscreen layout */
+.home-page {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  overflow: hidden;
+  display: flex;
+  margin-left: -50px;
+}
+
+/* Image style with hover effect */
+.home-img {
+  max-height: 400px;
+  transition: transform 0.4s ease-in-out;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  animation: fadeIn 1s ease-in-out;
+}
+
+.home-img:hover {
+  transform: scale(1.05);
+}
+
+/* Button animation */
+/* Stylish Gradient Button from Uiverse.io */
+/* From Uiverse.io by adamgiebl */ 
+.button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #725AC1;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #725AC1;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
+
+.button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
+
+.button:active {
+  transform: scale(0.9);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
