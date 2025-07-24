@@ -33,7 +33,7 @@ const RegisterPage = ({ onRegisterSuccess }) => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="container-fluid bg-auth d-flex justify-content-center align-items-center min-vh-100">
       <div className="card p-4" style={{ maxWidth: '400px', width: '100%' }}>
         <h3 className="text-center mb-4">Register</h3>
         {error && <div className="alert alert-danger">{error}</div>}

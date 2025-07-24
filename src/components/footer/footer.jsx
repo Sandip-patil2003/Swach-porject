@@ -3,19 +3,19 @@ import './footer.css';
 
 function Footer() {
   return (
-    <footer className="footer-container text-center bg-dark text-white py-4">
+    <footer className="footer-container margin bg-dark text-white py-4">
       <div className="footer-content container row">
-        <div className="col-md-4 footer-section">
+        <div className="col-md-4 footer-section  text-center">
           <h5>Locate us</h5>
           <p className='text-white'>
-            Directorate, Urban Administration & Development,<br />
-            Palika Bhawan,<br />
+            Directorate, Urban Administration & <br/>
+            Development,Palika Bhawan,<br />
             Shivaji Nagar, Bhopal,<br />
             Madhya Pradesh 462016
           </p>
         </div>
 
-        <div className="col-md-4 footer-section">
+        <div className="col-md-4 footer-section  text-center">
           <h5>Contact Us</h5>
           <p className='text-white'>
             Call 18002335522, our central 24x7<br />
@@ -24,7 +24,7 @@ function Footer() {
           </p>
         </div>
 
-        <div className="col-md-4 footer-section">
+        <div className="col-md-4 footer-section  text-center">
           <h5>Connect with us</h5>
           <p className='text-white'>Follow us on:</p>
           <p className='text-white'>

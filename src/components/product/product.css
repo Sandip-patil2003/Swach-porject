@@ -23,8 +23,14 @@ label {
 }
 
 .size{
-    margin-left: 13%;
+    margin-left: 14%;
 }
+
+.error-msg {
+  margin-left: 13%;
+}
+
+
 
 
 

@@ -9,13 +9,30 @@ const BillDetails = () => {
     month: '',
     year: ''
   });
+
+  const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Clear error as user types
+    if (value.trim() !== '') {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleSubmit = async () => {
+    const errors = {};
+    if (!formData.societyName) errors.societyName = 'Society Name is required';
+    if (!formData.month) errors.month = 'Month is required';
+    if (!formData.year) errors.year = 'Year is required';
+
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length > 0) return;
+
     try {
       await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
       navigate('/format');
@@ -26,18 +43,33 @@ const BillDetails = () => {
 
   return (
     <div className="border p-4 mb-4 bg-light rounded" style={{ maxWidth: '800px', margin: '40px auto', fontSize: '1.15rem' }}>
-      <h3 className="text-center mb-4" style={{fontSize:"20px"}}>BILL DETAILS</h3>
+      <h3 className="text-center mb-4" style={{ fontSize: "20px" }}>BILL DETAILS</h3>
       <div className="row">
         <div className="col-md-6">
-          <label  className='size'>Society Name</label>
-          <select className="form-control mx-auto w-75 h-50 text" style={{fontSize:"15px"}} name="societyName" value={formData.societyName} onChange={handleChange}>
+          <label className='size'>Society Name</label>
+          <select
+            className="form-control mx-auto w-75 h-50 text"
+            style={{ fontSize: "15px" }}
+            name="societyName"
+            value={formData.societyName}
+            onChange={handleChange}
+          >
             <option value="">Select</option>
             <option value="Swach Phase 1 Society">Swach Phase 1 Society</option>
           </select>
+          {formErrors.societyName && (
+            <small className="text-danger size" style={{ marginLeft: '13%' }}>{formErrors.societyName}</small>
+          )}
         </div>
         <div className="col-md-6">
           <label className='size'>Month</label>
-          <select className="form-control mx-auto w-75 h-50 text " style={{fontSize:"15px"}}  name="month" value={formData.month} onChange={handleChange} >
+          <select
+            className="form-control mx-auto w-75 h-50 text"
+            style={{ fontSize: "15px" }}
+            name="month"
+            value={formData.month}
+            onChange={handleChange}
+          >
             <option value="">Select</option>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -52,16 +84,33 @@ const BillDetails = () => {
             <option value="November">November</option>
             <option value="December">December</option>
           </select>
+          {formErrors.month && (
+            <small className="text-danger size" style={{ marginLeft: '13%' }}>{formErrors.month}</small>
+          )}
         </div>
       </div>
       <div className="row mt-3">
         <div className="col-md-6">
-          <label  className='size'>Year</label>
-          <input type="number" name="year" min="2000" max="2099" className="form-control mx-auto w-75 h-50" value={formData.year} onChange={handleChange} style={{ fontSize: '1.1rem' }} />
+          <label className='size'>Year</label>
+          <select
+            name="year"
+            className="form-control text mx-auto w-75 h-50"
+            value={formData.year}
+            onChange={handleChange}
+            style={{ fontSize: '1.1rem' }}
+          >
+            <option value="">Select</option>
+            {Array.from({ length: 31 }, (_, i) => 2000 + i).map(year => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+          {formErrors.year && (
+            <small className="text-danger size" style={{ marginLeft: '13%' }}>{formErrors.year}</small>
+          )}
         </div>
       </div>
       <div className="text-center mt-4">
-        <button className="btn btn-primary me-2" style={{minWidth: '150px' }} onClick={handleSubmit}>Generate Bill</button>
+        <button className="btn btn-primary me-2" style={{ minWidth: '150px' }} onClick={handleSubmit}>Generate Bill</button>
         <button className="btn btn-secondary" style={{ minWidth: '120px' }}>Cancel</button>
       </div>
     </div>
@@ -69,4 +118,3 @@ const BillDetails = () => {
 };
 
 export default BillDetails;
-

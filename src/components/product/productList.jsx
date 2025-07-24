@@ -34,9 +34,15 @@ const ProductList = () => {
     }
   };
 
-  const handleEdit = (product) => {
-    alert(`EDIT clicked for product ID: ${product.id}`);
-    // You can open a modal or pass data to edit form here
+  const handleEdit = async (product) => {
+    try {
+      const res = await axios.get(`${API_URL}/${product.id}`);
+      alert(`EDIT clicked for product ID: ${product.id}`);
+      // You can use res.data to prefill an edit form/modal
+    } catch (err) {
+      alert('Failed to fetch product details.');
+      console.error('Edit Fetch Error:', err);
+    }
   };
 
   return (
@@ -61,8 +67,8 @@ const ProductList = () => {
                 <td>{item.costFlat}</td>
                 <td>{item.costSociety}</td>
                 <td className="d-flex flex-row">
-                  <button className="btn btn-sm btn-warning me-1" style={{fontSize:'13px'}} onClick={() => handleEdit(item)}>EDIT</button>
-                  <button className="btn btn-sm btn-danger" style={{fontSize:'13px'}} onClick={() => handleDelete(item.id)}>DELETE</button>
+                  <button className="btn btn-sm me-1" style={{fontSize:'13px', border:'1px solid black' }} onClick={() => handleEdit(item)}>EDIT</button>
+                  <button className="btn btn-sm" style={{fontSize:'13px', border:"1px solid deepskyblue"}} onClick={() => handleDelete(item.id)}>DELETE</button>
                 </td>
               </tr>
             ))

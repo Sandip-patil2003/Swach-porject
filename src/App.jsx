@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import NavigationBar from "./components/navbar/Navbar";
-import Home from "./components/Home/Home";
+import Home from "./components/home/Home";
 import AboutUs from "./components/AboutUS/AboutUS";
 import What_We_Do from "./components/WhatWeDo/What_We_Do";
 import Sugandhabai from "./components/Sugandhabai";
@@ -28,20 +28,19 @@ function App() {
   useEffect(() => {
     localStorage.setItem('isLoggedIn', isLoggedIn);
   }, [isLoggedIn]);
-
   return (
     <Router>
-      <NavigationBar />
-      <div className="container mt-4">
+      {isLoggedIn && <NavigationBar />}
+      <div className={isLoggedIn ? "container mt-4" : undefined}>
         <Routes>
           <Route path="/login" element={<LoginPage onLoginSuccess={() => setIsLoggedIn(true)} isRegistered={isRegistered} />} />
           <Route path="/register" element={<RegisterPage onRegisterSuccess={() => setIsRegistered(true)} />} />
           <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
-           <Route path="/about" element={isLoggedIn ? <AboutUs /> : <Navigate to="/login" />} />
-            <Route path="/whatwedo" element={isLoggedIn ? <What_We_Do /> : <Navigate to="/login" />} />
-             <Route path="/sugandhabai" element={isLoggedIn ? <Sugandhabai /> : <Navigate to="/login" />} />
-              <Route path="/resources" element={isLoggedIn ? <Resources /> : <Navigate to="/login" />} />
-               <Route path="/blog" element={isLoggedIn ? <Blog/> : <Navigate to="/login" />} />
+          <Route path="/about" element={isLoggedIn ? <AboutUs /> : <Navigate to="/login" />} />
+          <Route path="/whatwedo" element={isLoggedIn ? <What_We_Do /> : <Navigate to="/login" />} />
+          <Route path="/sugandhabai" element={isLoggedIn ? <Sugandhabai /> : <Navigate to="/login" />} />
+          <Route path="/resources" element={isLoggedIn ? <Resources /> : <Navigate to="/login" />} />
+          <Route path="/blog" element={isLoggedIn ? <Blog /> : <Navigate to="/login" />} />
           <Route path="/bill-history" element={isLoggedIn ? <BillHistoryList /> : <Navigate to="/login" />} />
           <Route path="/format" element={isLoggedIn ? <BillFormat /> : <Navigate to="/login" />} />
           <Route path="/society-master" element={isLoggedIn ? <SocietyMaster /> : <Navigate to="/login" />} />
@@ -52,7 +51,7 @@ function App() {
           <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} />} />
         </Routes>
       </div>
-      <Footer />
+      {isLoggedIn && <Footer />}
     </Router>
   );
 }

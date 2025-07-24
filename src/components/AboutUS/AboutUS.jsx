@@ -41,7 +41,8 @@ const AboutUs = () => {
           </Button>
         </div>
         <div>
-            <ul className="mt-5">
+          <h2 className='ms-5 mt-5'>Our Goal</h2>
+            <ul className="mt-3 ms-5">
                     <li>The Mahanagar Palika (Municipal Corporation) is committed to making</li>
                     <li>our cities cleaner and healthier through the Swachh Bharat initiative.</li>
                     <li>We aim to provide efficient waste management services, promote</li>

@@ -18,13 +18,14 @@ function SocietyDetails({ onSuccess }) {
 
     const [selectedBHK, setSelectedBHK] = useState('');
     const [otherBHK, setOtherBHK] = useState('');
+    const [errors, setErrors] = useState({});
 
     const handleCheckboxChange = (value) => {
         setSelectedBHK(value);
         if (value !== 'OTHERS') {
             setOtherBHK('');
         }
-    }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -32,9 +33,38 @@ function SocietyDetails({ onSuccess }) {
             ...prev,
             [name]: value
         }));
+        setErrors(prev => ({ ...prev, [name]: '' }));
+    };
+
+    const validateFields = () => {
+        const newErrors = {};
+
+        const requiredFields = ['societyName', 'address', 'pinCode', 'personName', 'mobileNo', 'landlineNo', 'emailId', 'nof'];
+        requiredFields.forEach(field => {
+            if (!formData[field].trim()) {
+                newErrors[field] = 'This field is required';
+            }
+        });
+
+        if (!selectedBHK.trim()) {
+            newErrors.flatType = 'Please select a BHK type';
+        }
+
+        if (selectedBHK === 'OTHERS' && !otherBHK.trim()) {
+            newErrors.flatType = 'Please enter other BHK type';
+        }
+
+        return newErrors;
     };
 
     const handleSubmit = async () => {
+        const validationErrors = validateFields();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            alert("Please fill all required fields.");
+            return;
+        }
+
         try {
             await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
             alert('Society submitted!');
@@ -60,52 +90,45 @@ function SocietyDetails({ onSuccess }) {
         });
         setSelectedBHK('');
         setOtherBHK('');
+        setErrors({});
     };
 
     return (
         <div className="border p-4 mb-4 bg-light rounded">
             <h5 className="text-center mb-4">SOCIETY DETAILS</h5>
 
-            <div className="row  ">
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Society Name</label>
-                    <input className="form-control mx-auto w-75 h-50" name="societyName" value={formData.societyName} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3 ">
-                    <label className='size'>Person Name</label>
-                    <input className="form-control mx-auto w-75 h-50" name="personName" value={formData.personName} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Address</label>
-                    <textarea className="form-control mx-auto w-75 h-50" name="address" value={formData.address} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Mobile No.</label>
-                    <input className="form-control mx-auto w-75 style" name="mobileNo" value={formData.mobileNo} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Pin Code</label>
-                    <input className="form-control mx-auto w-75 h-50" name="pinCode" value={formData.pinCode} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Landline No.</label>
-                    <input className="form-control mx-auto w-75 h-50" name="landlineNo" value={formData.landlineNo} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Email ID</label>
-                    <input className="form-control mx-auto w-75 h-50" name="emailId" value={formData.emailId} onChange={handleChange} />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Number of Flats/Homes</label>
-                    <input type="number" className="form-control mx-auto w-75 h-50" name="nof" value={formData.nof} onChange={handleChange} />
-                </div>
+            <div className="row">
+                {[
+                    ['societyName', 'Society Name'],
+                    ['personName', 'Person Name'],
+                    ['address', 'Address'],
+                    ['mobileNo', 'Mobile No.'],
+                    ['pinCode', 'Pin Code'],
+                    ['landlineNo', 'Landline No.'],
+                    ['emailId', 'Email ID'],
+                    ['nof', 'Number of Flats/Homes'],
+                    ['otherType', 'Other Flat Type']
+                ].map(([name, label]) => (
+                    <div className="col-md-6 mb-3" key={name}>
+                        <label className='size'>{label}</label>
+                        {name === 'address' ? (
+                            <textarea
+                                className="form-control mx-auto w-75 h-50"
+                                name={name}
+                                value={formData[name]}
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <input
+                                className="form-control mx-auto w-75 h-50"
+                                name={name}
+                                value={formData[name]}
+                                onChange={handleChange}
+                            />
+                        )}
+                        {errors[name] && <small className="text-danger size" >{errors[name]}</small>}
+                    </div>
+                ))}
 
                 <div className="col-md-6 mb-3">
                     <label className='size'>Flat Type (BHK)</label>
@@ -135,15 +158,11 @@ function SocietyDetails({ onSuccess }) {
                             }}
                         />
                     )}
+                    {errors.flatType && <small className="text-danger size">{errors.flatType}</small>}
 
                     {selectedBHK !== 'OTHERS' && selectedBHK && (
                         <p className="mt-2"><strong>Selected BHK:</strong> {selectedBHK}</p>
                     )}
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label className='size'>Other Flat Type</label>
-                    <input className="form-control mx-auto style w-75" name="otherType" value={formData.otherType} onChange={handleChange} />
                 </div>
             </div>
 

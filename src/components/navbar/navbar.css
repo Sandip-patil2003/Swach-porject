@@ -29,8 +29,8 @@
 /* Hover and active state for nav links */
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  color: #afc0fa !important;
-  text-decoration: underline;
+  color: #ecd609 !important;
+  
 }
 
 /* Dropdown menu style */

@@ -25,3 +25,9 @@
   margin-right: 5px;
   color: #28a745;
 }
+
+.margin {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}

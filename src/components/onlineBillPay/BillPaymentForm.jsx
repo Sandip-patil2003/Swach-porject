@@ -32,7 +32,7 @@ const BillPaymentForm = () => {
     if (!validate()) return;
     try {
       await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
-      navigate("/bill-history"); 
+      navigate("/bill-history");
     } catch (error) {
       alert('Failed to submit');
       console.error(error);
@@ -45,43 +45,51 @@ const BillPaymentForm = () => {
   };
 
   return (
-    <div className="container-fluid bg-auth d-flex justify-content-center align-items-center min-vh-100">
-      <div className="card card-auth p-4 bg-light rounded" style={{ maxWidth: '500px', width: '100%' }}>
+    <div className="container-fluid bg-auth d-flex justify-content-center bg-light align-items-center min-vh-100">
+      <div className="card card-auth p-4 rounded" style={{ maxWidth: '500px', width: '100%' }}>
         <div className="card-body">
           <h3 className="card-title mb-4 text-center">BILL PAYMENT</h3>
           <form>
             <div className="mb-3">
-              <label htmlFor="societyName" className="form-label w-100 " style={{marginLeft:"13%"}}>Society Name</label>
-              <input
-                className={`form-control mx-auto w-75 h-50${errors.societyName ? ' is-invalid' : ''}`}
+              <label htmlFor="societyName" className="form-label w-100 size" style={{ marginLeft: "13%" }}>Society Name</label>
+              <select
+                className={`form-control mx-auto w-75 h-50 size${errors.societyName ? ' is-invalid' : ''}`}
                 name="societyName"
                 id="societyName"
                 value={formData.societyName}
                 onChange={handleChange}
                 required
-              />
-              {errors.societyName && <div className="invalid-feedback d-block" style={{marginLeft:"13%"}}>{errors.societyName}</div>}
+              >
+                <option value="">Select</option>
+                <option value="Swach Phase 1 Society">Swach Phase 1 Society</option>
+                <option value="Green Valley Residency">Green Valley Residency</option>
+                <option value="Sunshine Apartments">Sunshine Apartments</option>
+                <option value="Blue Sky Towers">Blue Sky Towers</option>
+              </select>
+              {errors.societyName && <div className="invalid-feedback d-block" style={{ marginLeft: "13%" }}>{errors.societyName}</div>}
             </div>
+
             <div className="mb-3">
-              <label htmlFor="billNumber" className="form-label w-100 " style={{marginLeft:"13%"}}>Bill Number</label>
+              <label htmlFor="billNumber" className="form-label w-100 size" style={{ marginLeft: "13%" }}>Bill Number</label>
               <input
-                className={`form-control mx-auto w-75 h-50${errors.billNumber ? ' is-invalid' : ''}`}
+                className={`form-control mx-auto w-75 h-50 size${errors.billNumber ? ' is-invalid' : ''}`}
                 name="billNumber"
                 id="billNumber"
                 value={formData.billNumber}
                 onChange={handleChange}
                 required
               />
-              {errors.billNumber && <div className="invalid-feedback d-block" style={{marginLeft:"13%"}}>{errors.billNumber}</div>}
+              {errors.billNumber && <div className="invalid-feedback d-block" style={{ marginLeft: "13%" }}>{errors.billNumber}</div>}
             </div>
+
             <div className="mb-3">
-              <label htmlFor="month" className="form-label w-100 " style={{marginLeft:"13%"}}>Select Month</label>
+              <label htmlFor="month" className="form-label w-100 size" style={{ marginLeft: "13%" }}>Select Month</label>
               <select
                 name="month"
                 id="month"
                 value={formData.month}
                 onChange={handleChange}
-                className={` form-control mx-auto w-75 h-50 ${errors.month ? ' is-invalid' : ''}`}
+                className={`form-control mx-auto w-75 h-50 size${errors.month ? ' is-invalid' : ''}`}
                 style={{ fontSize: '15px' }}
                 required
               >
@@ -91,24 +99,28 @@ const BillPaymentForm = () => {
                     <option key={month} value={month}>{month}</option>
                   ))}
               </select>
-              {errors.month && <div className="invalid-feedback d-block" style={{marginLeft:"13%"}}>{errors.month}</div>}
+              {errors.month && <div className="invalid-feedback d-block" style={{ marginLeft: "13%" }}>{errors.month}</div>}
             </div>
+
             <div className="mb-3">
-              <label htmlFor="year" className="form-label w-100 " style={{marginLeft:"13%"}}>Select Year</label>
-              <input
-                type="number"
+              <label htmlFor="year" className="form-label w-100 size" style={{ marginLeft: "13%" }}>Select Year</label>
+              <select
                 name="year"
                 id="year"
-                min="2000"
-                max="2099"
-                className={`form-control mx-auto w-75 h-50${errors.year ? ' is-invalid' : ''}`}
+                className={`form-control mx-auto w-75 h-50 size${errors.year ? ' is-invalid' : ''}`}
                 style={{ fontSize: '15px' }}
                 value={formData.year}
                 onChange={handleChange}
                 required
-              />
-              {errors.year && <div className="invalid-feedback d-block " style={{marginLeft:"13%"}}>{errors.year}</div>}
+              >
+                <option value="">Select</option>
+                {Array.from({ length: 31 }, (_, i) => 2000 + i).map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
+              </select>
+              {errors.year && <div className="invalid-feedback d-block" style={{ marginLeft: "13%" }}>{errors.year}</div>}
             </div>
+
             <div className="mt-4 text-center">
               <button type="button" className="btn btn-primary me-2" onClick={handleGetDetails}>Get Details</button>
               <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
@@ -121,5 +133,3 @@ const BillPaymentForm = () => {
 };
 
 export default BillPaymentForm;
-
-

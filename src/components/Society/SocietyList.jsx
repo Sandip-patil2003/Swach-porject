@@ -94,8 +94,8 @@ function SocietyList() {
                 <td>email@example.com</td>
                 <td>100</td>
                 <td className='d-flex flex-row'>
-                  <button className="btn btn-sm btn-warning me-1" style={{fontSize:'13px'}} onClick={() => handleEdit(item.id)}>EDIT</button>
-                  <button className="btn btn-sm btn-danger" style={{fontSize:'13px'}} onClick={() => handleDelete(item.id)}>DELETE</button>
+                  <button className="btn btn-sm  me-1" style={{fontSize:'13px',  border:'1px solid black' }} onClick={() => handleEdit(item.id)}>EDIT</button>
+                  <button className="btn btn-sm " style={{fontSize:'13px', border:"1px solid deepskyblue"}} onClick={() => handleDelete(item.id)}>DELETE</button>
                 </td>
               </tr>
             ))}

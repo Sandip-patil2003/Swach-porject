@@ -48,7 +48,7 @@ const WhatWeDo = () => {
           {services.map((item, index) => (
             <Col md={6} lg={4} key={index} className="mb-4">
               <Card className="shadow-sm h-100 card-hover">
-                <Card.Body>
+                <Card.Body style={{ backgroundColor: '#d9e8f7ff' }}>
                   <Card.Title>{item.title}</Card.Title>
                   <Card.Text>{item.description}</Card.Text>
                 </Card.Body>

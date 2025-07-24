@@ -69,7 +69,7 @@ const Blog = () => {
           <Row className="justify-content-center">
             <Col md={10} lg={8}>
               <Card className="shadow-sm p-4">
-                <Card.Body>
+                <Card.Body >
                   <Card.Title>{selectedPost.title}</Card.Title>
                   <Card.Subtitle className="mb-3 text-muted">
                     {selectedPost.date} • {selectedPost.author}
@@ -89,7 +89,7 @@ const Blog = () => {
             {blogPosts.map((post, index) => (
               <Col md={6} lg={4} key={index} className="mb-4">
                 <Card className="h-100 shadow-sm blog-card">
-                  <Card.Body>
+                  <Card.Body style={{ backgroundColor: '#e7f0faff' }}>
                     <Card.Title>{post.title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
                       {post.date} • {post.author}

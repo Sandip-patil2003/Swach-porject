@@ -143,7 +143,7 @@ The guidelines are enforced in collaboration with labor departments, health offi
           {resources.map((res, index) => (
             <Col key={index} md={6} lg={4} className="mb-4">
               <Card className="h-100 shadow-sm resource-card">
-                <Card.Body>
+                <Card.Body style={{ backgroundColor: '#f0f4f8' }}>
                   <Card.Title>{res.title}</Card.Title>
                   <Card.Text>{res.description}</Card.Text>
                   <div className="d-flex justify-content-end">
@@ -163,7 +163,7 @@ The guidelines are enforced in collaboration with labor departments, health offi
         <Modal.Header closeButton>
           <Modal.Title>{selectedResource?.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body >
           <ReactMarkdown>{selectedResource?.details || ''}</ReactMarkdown>
         </Modal.Body>
         <Modal.Footer>

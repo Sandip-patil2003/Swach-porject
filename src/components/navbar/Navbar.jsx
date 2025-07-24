@@ -27,6 +27,16 @@ function NavigationBar() {
               <NavDropdown.Item as={Link} to="/bill-details">BILL DETAILS</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/online-bill-pay">ONLINE BILL PAY</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link
+              as="button"
+              className="text-white btn btn-danger"
+              onClick={() => {
+                localStorage.setItem('isLoggedIn', 'false');
+                window.location.reload();
+              }}
+            >
+              LOGOUT
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
