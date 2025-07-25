@@ -70,7 +70,7 @@ const BillHistoryList = () => {
       </div>
 
       <div className="mt-3 text-center">
-        <button className="btn btn-success" onClick={handleMakePayment}>
+        <button className="btn btn-success mb-5 mt-4" onClick={handleMakePayment}>
           Make Payment
         </button>
       </div>

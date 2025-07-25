@@ -5,15 +5,21 @@ import axios from 'axios';
 const RegisterPage = ({ onRegisterSuccess }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
     username: '',
     password: '',
     email: '',
-    gender: ''
+    gender: '',
+    dob: '' // YYYY-MM-DD
   });
+  const [dobDay, setDobDay] = useState('1');
+  const [dobMonth, setDobMonth] = useState('1');
+  const [dobYear, setDobYear] = useState('2000');
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
@@ -22,8 +28,10 @@ const RegisterPage = ({ onRegisterSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const dobFormatted = `${dobYear}-${dobMonth.padStart(2, '0')}-${dobDay.padStart(2, '0')}`;
+    const submitData = { ...formData, dob: dobFormatted };
     try {
-      await axios.post('https://jsonplaceholder.typicode.com/users', formData);
+      await axios.post('https://jsonplaceholder.typicode.com/users', submitData);
       localStorage.setItem('isRegistered', 'true');
       if (onRegisterSuccess) onRegisterSuccess();
       navigate('/login');
@@ -38,9 +46,15 @@ const RegisterPage = ({ onRegisterSuccess }) => {
         <h3 className="text-center mb-4">Register</h3>
         {error && <div className="alert alert-danger">{error}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Username</label>
-            <input type="text" className="form-control" name="username" value={formData.username} onChange={handleChange} required />
+          <div className="row mb-3">
+            <div className="col">
+              <label className="form-label">First Name</label>
+              <input type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} required />
+            </div>
+            <div className="col">
+              <label className="form-label">Last Name</label>
+              <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} required />
+            </div>
           </div>
           <div className="mb-3">
             <label className="form-label">Gender</label>
@@ -84,6 +98,26 @@ const RegisterPage = ({ onRegisterSuccess }) => {
                 />
                 <label className="form-check-label" htmlFor="genderOther">Other</label>
               </div>
+            </div>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Date of Birth</label>
+            <div className="d-flex gap-2">
+              <select className="form-select" value={dobDay} onChange={e => setDobDay(e.target.value)} required>
+                {[...Array(31)].map((_, i) => (
+                  <option key={i+1} value={String(i+1)}>{i+1}</option>
+                ))}
+              </select>
+              <select className="form-select" value={dobMonth} onChange={e => setDobMonth(e.target.value)} required>
+                {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map((m, i) => (
+                  <option key={i+1} value={String(i+1)}>{m}</option>
+                ))}
+              </select>
+              <select className="form-select" value={dobYear} onChange={e => setDobYear(e.target.value)} required>
+                {Array.from({length: 31}, (_, i) => 2000 + i).map(y => (
+                  <option key={y} value={String(y)}>{y}</option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="mb-3">

@@ -72,9 +72,6 @@ function LoginPage({ onLoginSuccess, isRegistered }) {
       <div className="card card-auth p-4" style={{ maxWidth: '400px', width: '100%' }}>
         <div className="card-body">
           <h3 className="card-title mb-4 text-center">{showForgot ? 'Forgot Password' : 'Login'}</h3>
-          {!showForgot && !isRegistered && (
-            <div className="alert alert-warning text-center mb-3">You are not registered. Please register first.</div>
-          )}
           {!showForgot && error && <div className="alert alert-danger">{error}</div>}
           {showForgot && forgotMsg && <div className={`alert ${forgotMsg.includes('sent') ? 'alert-success' : 'alert-danger'}`}>{forgotMsg}</div>}
           {!showForgot ? (
@@ -89,7 +86,6 @@ function LoginPage({ onLoginSuccess, isRegistered }) {
                     placeholder="Enter email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    disabled={!isRegistered}
                   />
                 </div>
                 <div className="mb-3">
@@ -101,10 +97,9 @@ function LoginPage({ onLoginSuccess, isRegistered }) {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    disabled={!isRegistered}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-100" disabled={!isRegistered}>Login</button>
+                <button type="submit" className="btn btn-primary w-100">Login</button>
               </form>
               <div className="mt-2 text-center">
                 <button className="btn btn-link p-0" type="button" onClick={() => setShowForgot(true)}>
